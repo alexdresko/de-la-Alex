@@ -58,6 +58,27 @@ module.exports = function(grunt) {
     qunit: {
       files: ['test/**/*.html']
     },
+    ts: {
+        // A specific target
+        build: {
+            // The source TypeScript files, http://gruntjs.com/configuring-tasks#files
+            src: ["./scripts/**/*.ts"],
+            // The source html files, https://github.com/grunt-ts/grunt-ts#html-2-typescript-support
+            reference: "./scripts/reference.ts",  
+            options: {
+                // 'es3' (default) | 'es5'
+                target: 'es5',
+                // 'amd' (default) | 'commonjs'
+                module: 'amd',
+                // true (default) | false
+                sourceMap: true,
+                // true | false (default)
+                declaration: false,
+                // true (default) | false
+                removeComments: true
+            },
+        }
+    },
     watch: {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
@@ -76,8 +97,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks("grunt-ts");
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify', 'ts']);
 
 };
