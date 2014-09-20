@@ -79,6 +79,17 @@ module.exports = function(grunt) {
             },
         }
     },
+    typescript: {
+      base: {
+        src: ['scripts/**/*.ts'],
+        options: {
+          module: 'amd', //or commonjs
+          target: 'es5', //or es3
+          sourceMap: true,
+          declaration: true
+        }
+      }
+    },
     watch: {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
@@ -98,6 +109,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks("grunt-ts");
+  grunt.loadNpmTasks('grunt-typescript');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify', 'ts']);
