@@ -59,34 +59,43 @@ module.exports = function(grunt) {
       files: ['test/**/*.html']
     },
     ts: {
-        // A specific target
-        build: {
-            // The source TypeScript files, http://gruntjs.com/configuring-tasks#files
-            src: ["./scripts/**/*.ts"],
-            // The source html files, https://github.com/grunt-ts/grunt-ts#html-2-typescript-support
-            reference: "./scripts/reference.ts",  
-            options: {
-                // 'es3' (default) | 'es5'
-                target: 'es5',
-                // 'amd' (default) | 'commonjs'
-                module: 'amd',
-                // true (default) | false
-                sourceMap: true,
-                // true | false (default)
-                declaration: false,
-                // true (default) | false
-                removeComments: true
-            },
-        }
-    },
-    typescript: {
-      base: {
-        src: ['scripts/**/*.ts'],
+      // A specific target
+      build: {
+        // The source TypeScript files, http://gruntjs.com/configuring-tasks#files
+        src: ["./scripts/**/*.ts"],
+        // The source html files, https://github.com/grunt-ts/grunt-ts#html-2-typescript-support
+        reference: "./scripts/reference.ts",
         options: {
-          module: 'amd', //or commonjs
-          target: 'es5', //or es3
+          // 'es3' (default) | 'es5'
+          target: 'es5',
+          // 'amd' (default) | 'commonjs'
+          module: 'amd',
+          // true (default) | false
           sourceMap: true,
-          declaration: true
+          // true | false (default)
+          declaration: false,
+          // true (default) | false
+          removeComments: true,
+          watch: "scripts"
+        },
+      }
+    },
+    less: {
+      development: {
+        options: {
+          paths: ["content"]
+        },
+        files: {
+          "content/site.css": "content/site.less"
+        }
+      },
+      production: {
+        options: {
+          paths: ["content"],
+          cleancss: true
+        },
+        files: {
+          "content/site.css": "content/site.less"
         }
       }
     },
@@ -94,6 +103,13 @@ module.exports = function(grunt) {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']
+      },
+      scripts: {
+        files: 'scripts/**/*.ts',
+        tasks: ['ts'],
+        options: {
+          interrupt: true,
+        },
       },
       lib_test: {
         files: '<%= jshint.lib_test.src %>',
@@ -110,7 +126,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks("grunt-ts");
   grunt.loadNpmTasks('grunt-typescript');
-
+  grunt.loadNpmTasks('grunt-contrib-less');
   // Default task.
   grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify', 'ts']);
 

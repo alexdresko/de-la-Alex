@@ -1,3 +1,4 @@
 //grunt-start
-/// <reference path="home.ts" />
+/// <reference path="index.ts" />
+/// <reference path="pagerjs.d.ts" />
 //grunt-end
