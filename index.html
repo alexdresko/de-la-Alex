@@ -72,19 +72,42 @@
     <div class="jumbotron">
         <div class="container">
             <h1>Cloud9 works!</h1>
-            <p class="lead">So far, every bit of this site was created via github and Cloud9!</p>
+            <p class="lead">So fart, every bit of this site was created via github and Cloud9!</p>
 
         </div>
     </div>
 
     <div class="container">
-
+        asdf
         <div data-bind="page: {id: 'start', title: 'Pager.js Demo Start'}">
             ...<a href="#!/structure">Read about the structure.</a>...
         </div>
         <div data-bind="page: {id: 'structure'}">
             testo
         </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Latest from <a href="https://github.com/alexdresko/de-la-Alex" target="_blank">https://github.com/alexdresko/de-la-Alex</a></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div data-bind="foreach: githubEvents">
+                            <!--<div data-bind="text: type"></div>-->
+                            <strong>
+                                <a data-bind="attr: { href: url, target: '_blank' }"><span data-bind="text: title"></span></a> by <span data-bind="text: author"></span> on 
+                            <span data-bind="text: moment(date).format('MMMM DD YYYY')"></span>
+                            </strong>
+                            
+                            <div data-bind="text: subject"></div>
+                            <hr/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="disqus_thread"></div>
         <script type="text/javascript">
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -103,14 +126,7 @@
         </noscript>
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-        <h2>Latest from https://github.com/alexdresko/de-la-Alex</h2>
-        <div data-bind="foreach: githubEvents">
-            <div data-bind="text: type"></div>
-            <div data-bind="text: author"></div>
-            <div data-bind="text: date"></div>
-            <div data-bind="text: title"></div>
-            <div data-bind="text: subject"></div>
-        </div>
+
 
 
     </div>
@@ -124,8 +140,11 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/knockoutjs/dist/knockout.js"></script>
+    <script scr="bower_components/history.js/scripts/compressed/history.js"></script>
     <script src="bower_components/pagerjs/dist/pager.min.js"></script>
+    <script src="bower_components/momentjs/min/moment.min.js"></script>
     <script src="scripts/index.js"></script>
+
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="scripts/ie10-viewport-bug-workaround.js"></script>
 </body>
