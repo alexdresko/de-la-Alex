@@ -10,6 +10,7 @@
     <link rel="icon" href="../../favicon.ico">
     <link href="//fonts.googleapis.com/css?family=Shojumaru:400" rel="stylesheet" type="text/css">
 
+    <!--<base href="https://de-la-alex-c9-alexdresko.c9.io/"/>-->
     <title>Starter Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
@@ -78,14 +79,27 @@
     </div>
 
     <div class="container">
-        asdf
-        <div data-bind="page: {id: 'start', title: 'Pager.js Demo Start'}">
-            ...<a href="#!/structure">Read about the structure.</a>...
+        <div data-bind="page: {id: 'start'}">
+            <!-- the previous page -->asdf
         </div>
         <div data-bind="page: {id: 'structure'}">
-            testo
+            <!-- this page -->qwer
         </div>
+        <div data-bind="page: {
+      id: 'about',
+      sourceOnShow: 'about.html .content'
+      }">
+    ...
+</div>
 
+<a class="btn btn-large btn-primary" data-bind="page-step: 1" href="#structure">Read about Structure</a>
+<a class="btn btn-large" data-bind="page-step: -1" href="#start">Back to Pager.js Demo Start</a>
+
+        <div data-bind="page: {
+      id: 'about',
+      sourceOnShow: 'about.html .content'}">
+            what goes here?
+        </div>
         <div class="row">
             <div class="col-sm-6">
                 <div class="panel panel-default">
@@ -99,7 +113,7 @@
                                 <a data-bind="attr: { href: url, target: '_blank' }"><span data-bind="text: title"></span></a> by <span data-bind="text: author"></span> on 
                             <span data-bind="text: moment(date).format('MMMM DD YYYY')"></span>
                             </strong>
-                            
+
                             <div data-bind="text: subject"></div>
                             <hr/>
                         </div>

@@ -40,13 +40,27 @@ module deLaAlex  {
 $(function() {
     var data = new deLaAlex.Index();
 
-    
     // extend your view-model with pager.js specific data
     pager.extendWithPage(data);
     // apply the view-model using KnockoutJS as normal
     ko.applyBindings(data);
     // start pager.js
     pager.start();
+    
+    
+
+ 
+ 
+// // use HTML5 history
+// pager.useHTML5history = true;
+// // use History instead of history
+// pager.Href5.history = History;
+// // extend your view-model with pager.js specific data
+// pager.extendWithPage(data);
+// // apply the view-model using KnockoutJS as normal
+// ko.applyBindings(data);
+// // start pager.js
+// pager.startHistoryJs();
 
 })
 
